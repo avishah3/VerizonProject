@@ -10,10 +10,10 @@ app = customtkinter.CTk()
 app.geometry("1920x1080")
 
 # Image file path (replace with your image file path)
-image_file_path = "first frame.png"
+image_file_path = "verican first frame.png"
 
 # Video file path (rename it to your video file)
-video_file_path = "Verizon Intro Better.mp4"
+video_file_path = "Verican Animation.mp4"
 
 # Create a label to display the image
 image = Image.open(image_file_path)
@@ -35,6 +35,7 @@ def switch_to_video():
     # Play the video
     videoplayer.play()
     button.destroy()
+
 
 # Create a central button to trigger the video transition
 button = customtkinter.CTkButton(master=app, text="Feeling Lost", command=switch_to_video)
