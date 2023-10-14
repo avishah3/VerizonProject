@@ -28,9 +28,12 @@ root.geometry("1920x1080")
 
 # Sample questions
 questions = [
-    {"text": "How would you rate the quality of this product?", "value": 3},
-    {"text": "How satisfied are you with our service?", "value": 4},
-    {"text": "How likely are you to buy from us again?", "value": 5}
+    {"text": "How much money are you willing to spend?", "value": 3},
+    {"text": "How tech-savvy would you consider yourself?", "value": 4},
+    {"text": "How old are you?", "value": 5},
+    {"text": "How long have you been with the company?", "value": 6},
+    {"text": "How satisfied are you with your current plan?", "value": 7},
+    {"text": "How many people are buying for?", "value": 8}
 ]
 
 current_question_index = 0
