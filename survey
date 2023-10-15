@@ -26,28 +26,39 @@ def display_recommendations():
     question_label.place_forget()
     answer_entry.place_forget()
     btn.place_forget()
-    if hasattr(scale_widget, "place_forget"):
-        scale_widget.place_forget()
 
     # Display recommendations text
     recommendations_label = tk.Label(root, text="Based on your results, here are your top recommendations from Verizon:", font=("Arial", 24), wraplength=1600, justify='center')
     recommendations_label.place(relx=0.5, rely=0.2, anchor='c')
+    
+    desired_width, desired_height = 300, 300
 
     # Load and display images
-    img1 = ImageTk.PhotoImage(Image.open("iphone12.jpeg")) # replace with your image path
+    img1 = Image.open("iphone12.jpeg")
+    img1 = img1.resize((desired_width, desired_height))
+    img1 = ImageTk.PhotoImage(img1)
+    
     img_label1 = tk.Label(root, image=img1)
     img_label1.image = img1
-    img_label1.place(relx=0.25, rely=0.5, anchor='c')
+    img_label1.place(relx=0.25, rely=0.6, anchor='c')
 
-    img2 = ImageTk.PhotoImage(Image.open("iphone13.jpeg")) # replace with your image path
+    # Load and resize the second image
+    img2 = Image.open("iphone13.jpeg")
+    img2 = img2.resize((desired_width, desired_height))
+    img2 = ImageTk.PhotoImage(img2)
+    
     img_label2 = tk.Label(root, image=img2)
     img_label2.image = img2
-    img_label2.place(relx=0.5, rely=0.5, anchor='c')
+    img_label2.place(relx=0.5, rely=0.6, anchor='c')
 
-    img3 = ImageTk.PhotoImage(Image.open("iphone14.jpg")) # replace with your image path
+    # Load and resize the third image
+    img3 = Image.open("iphone14.jpg")
+    img3 = img3.resize((desired_width, desired_height))
+    img3 = ImageTk.PhotoImage(img3)
+    
     img_label3 = tk.Label(root, image=img3)
     img_label3.image = img3
-    img_label3.place(relx=0.75, rely=0.5, anchor='c')
+    img_label3.place(relx=0.75, rely=0.6, anchor='c')
 
 root = tk.Tk()
 root.title("Text Input Questions")
@@ -56,10 +67,6 @@ root.geometry("1920x1080")
 # Bind the Enter key to the submit_answer function
 root.bind('<Return>', lambda event=None: submit_answer())
 
-try:
-    scale_widget
-except NameError:
-    scale_widget = tk.Scale(root, from_=1, to_=5, orient=tk.HORIZONTAL, font=("Arial", 16), sliderlength=20, length=300)
 # Sample questions
 questions = [
      {"text": "How much money are you willing to spend?", "value": ""},
