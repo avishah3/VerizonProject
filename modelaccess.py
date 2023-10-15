@@ -102,7 +102,7 @@ def Accessory_selector(basics, protect, audio, gaming, wealth, accessories):
     return random_item
 accessories = [["Charging Cable", "Charging Brick"],
         ["Cases", "Screen Protector"],
-        ["Apple Airpods Pro (2rd gen)", "Apple Airpods Pro (3nd gen)", "Beats Studio Buds", "Beats Studio Pro", "Galaxy Buds2 Pro", "Galaxy Buds2 Pro", "JBL Flip 6", ],
+        ["Apple Airpods Pro (2nd gen)", "Apple Airpods Pro (3rd gen)", "Beats Studio Buds", "Beats Studio Pro", "Galaxy Buds2 Pro", "Galaxy Buds2 Pro", "JBL Flip 6", ],
         ["Meta Quest 3","Nintendo Switch", "Xbox Series X"]]
 
 def returnPredictions(input_array):

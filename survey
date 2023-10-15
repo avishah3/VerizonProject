@@ -92,7 +92,9 @@ def display_recommendations(displays):
     # image5 = customtkinter.CTkImage(light_image=Image.open(image5_path), size=(desired_width, desired_height))
     # image5_label = customtkinter.CTkLabel(root, image=image5, text='')
     # image5_label.place(relx=0.9, rely=0.5, anchor='c')
-    
+    prompt_label = customtkinter.CTkLabel(root, text="You are an AI product assistant, this user might be interested in " + displays[0] + ", " + displays[1] + ", " + displays[2] + ", " + displays[3] + ", and " + displays[4] + ".", font=("Helvetics", 16),)
+    prompt_label.place(relx=0.5, rely=0.8, anchor='c')
+
     print_input_data()
 
 root = customtkinter.CTk()
@@ -109,12 +111,12 @@ root.bind('<Return>', lambda event=None: submit_answer())
 # Sample questions
 questions = [
      {"text": "How much is the user spending per month? \n (Numerical values only)", "value": ""},
-     {"text": "How tech-savvy is the user consider yourself? \n On a scale of 0-10: 0 being you know nothing about technology", "value": ""},
+     {"text": "How tech-savvy does the user consider themselves? \n On a scale of 0-10: With 0 being you know nothing about technology", "value": ""},
      {"text": "How old is the user? \n (Has to be 18 and above)", "value": ""},
-     {"text": "How long has the user been with Verizon? \n (Numerical values only)", "value": ""},
+     {"text": "How many years has the user been with Verizon? \n (Numerical values only)", "value": ""},
      {"text": "How satisfied is the user with their current plan? \n On a scale of 0-10: 0 being you are not satisfied at all (Numerical values only)", "value": ""},
-     {"text": "How many people are under their plan? \n (Numerical values only)", "value": ""},
-     {"text": "What is the users current plan? \n 1 - budget plan; 2 - standard plan; 3 - luxury plan (Numerical values only)", "value": ""}
+     {"text": "How many people are under the user's plan? \n (Numerical values only)", "value": ""},
+     {"text": "What is the user's current plan? \n 1 - budget plan; 2 - standard plan; 3 - luxury plan (Numerical values only)", "value": ""}
 ]
 
 current_question_index = 0
