@@ -2,6 +2,7 @@ import tkinter as tk
 import customtkinter
 from PIL import Image, ImageTk
 import os
+from modelaccess import *
 
 customtkinter.set_appearance_mode("dark")
 customtkinter.set_default_color_theme("dark-blue")
@@ -23,7 +24,8 @@ def submit_answer():
         display_question()
     else:
         # All questions answered
-        display_recommendations("Beats Studio Buds.png", "Apple Airpods Pro (2nd gen).png", "Apple Airpods Pro (3rd gen).png", "Beats Studio Pro.png", "Cases.png")
+        data_to_print = print_input_data()
+        display_recommendations(data_to_print)
 
 def display_question():
     # Clear previous question and input
@@ -32,10 +34,16 @@ def display_question():
 
 def print_input_data():
     input_data[1] = input_data[1]/10
-    print(input_data)
-    
 
-def display_recommendations(img1path, img2path, img3path, img4path, img5path):
+    output_data = returnPredictions(input_data)
+    print(output_data)
+    print(input_data)
+
+    return output_data
+
+
+
+def display_recommendations(displays):
     # Clear the screen
     question_label.place_forget()
     answer_entry.place_forget()
@@ -53,30 +61,37 @@ def display_recommendations(img1path, img2path, img3path, img4path, img5path):
 
 
     # Load and display images
-    image1_path = os.path.join(os.getcwd(), img1path)
-    image1 = customtkinter.CTkImage(light_image=Image.open(image1_path), size=(desired_width, desired_height))
-    image1_label = customtkinter.CTkLabel(root, image=image1, text='')
-    image1_label.place(relx=0.1, rely=0.5, anchor='c')
 
-    image2_path = os.path.join(os.getcwd(), img2path)
-    image2 = customtkinter.CTkImage(light_image=Image.open(image2_path), size=(desired_width, desired_height))
-    image2_label = customtkinter.CTkLabel(root, image=image2, text='')
-    image2_label.place(relx=0.3, rely=0.5, anchor='c')
+    for i, elem in enumerate(displays):
+        image_path = os.path.join(os.getcwd(), "product_cards/"+elem+".png")
+        image = customtkinter.CTkImage(light_image=Image.open(image_path), size=(desired_width, desired_height))
+        image_label = customtkinter.CTkLabel(root, image=image, text='')
+        image_label.place(relx=0.1 + (0.2 * i), rely=0.5, anchor='c')
 
-    image3_path = os.path.join(os.getcwd(), img3path)
-    image3 = customtkinter.CTkImage(light_image=Image.open(image3_path), size=(desired_width, desired_height))
-    image3_label = customtkinter.CTkLabel(root, image=image3, text='')
-    image3_label.place(relx=0.5, rely=0.5, anchor='c')
+    # image1_path = os.path.join(os.getcwd(), img1path)
+    # image1 = customtkinter.CTkImage(light_image=Image.open(image1_path), size=(desired_width, desired_height))
+    # image1_label = customtkinter.CTkLabel(root, image=image1, text='')
+    # image1_label.place(relx=0.1, rely=0.5, anchor='c')
 
-    image4_path = os.path.join(os.getcwd(), img4path)
-    image4 = customtkinter.CTkImage(light_image=Image.open(image4_path), size=(desired_width, desired_height))
-    image4_label = customtkinter.CTkLabel(root, image=image4, text='')
-    image4_label.place(relx=0.7, rely=0.5, anchor='c')
+    # image2_path = os.path.join(os.getcwd(), img2path)
+    # image2 = customtkinter.CTkImage(light_image=Image.open(image2_path), size=(desired_width, desired_height))
+    # image2_label = customtkinter.CTkLabel(root, image=image2, text='')
+    # image2_label.place(relx=0.3, rely=0.5, anchor='c')
 
-    image5_path = os.path.join(os.getcwd(), img5path)
-    image5 = customtkinter.CTkImage(light_image=Image.open(image5_path), size=(desired_width, desired_height))
-    image5_label = customtkinter.CTkLabel(root, image=image5, text='')
-    image5_label.place(relx=0.9, rely=0.5, anchor='c')
+    # image3_path = os.path.join(os.getcwd(), img3path)
+    # image3 = customtkinter.CTkImage(light_image=Image.open(image3_path), size=(desired_width, desired_height))
+    # image3_label = customtkinter.CTkLabel(root, image=image3, text='')
+    # image3_label.place(relx=0.5, rely=0.5, anchor='c')
+
+    # image4_path = os.path.join(os.getcwd(), img4path)
+    # image4 = customtkinter.CTkImage(light_image=Image.open(image4_path), size=(desired_width, desired_height))
+    # image4_label = customtkinter.CTkLabel(root, image=image4, text='')
+    # image4_label.place(relx=0.7, rely=0.5, anchor='c')
+
+    # image5_path = os.path.join(os.getcwd(), img5path)
+    # image5 = customtkinter.CTkImage(light_image=Image.open(image5_path), size=(desired_width, desired_height))
+    # image5_label = customtkinter.CTkLabel(root, image=image5, text='')
+    # image5_label.place(relx=0.9, rely=0.5, anchor='c')
     
     print_input_data()
 
