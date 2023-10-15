@@ -45,31 +45,36 @@ def display_recommendations(img1path, img2path, img3path, img4path, img5path):
     recommendations_label = customtkinter.CTkLabel(root, text="Products for you:", font=("Helvetics", 50), wraplength=1600, justify='center')
     recommendations_label.place(relx=0.5, rely=0.2, anchor='c')
     
-    desired_width, desired_height = 300, 300
+    desired_width_ratio = 0.10
+    desired_height_ratio = 0.20
+    
+    desired_width = int(screen_width * desired_width_ratio)
+    desired_height = int(screen_height * desired_height_ratio)
+
 
     # Load and display images
     image1_path = os.path.join(os.getcwd(), img1path)
-    image1 = customtkinter.CTkImage(light_image=Image.open(image1_path), size=(150,230))
+    image1 = customtkinter.CTkImage(light_image=Image.open(image1_path), size=(desired_width, desired_height))
     image1_label = customtkinter.CTkLabel(root, image=image1, text='')
     image1_label.place(relx=0.1, rely=0.5, anchor='c')
 
     image2_path = os.path.join(os.getcwd(), img2path)
-    image2 = customtkinter.CTkImage(light_image=Image.open(image2_path), size=(150,230))
+    image2 = customtkinter.CTkImage(light_image=Image.open(image2_path), size=(desired_width, desired_height))
     image2_label = customtkinter.CTkLabel(root, image=image2, text='')
     image2_label.place(relx=0.3, rely=0.5, anchor='c')
 
     image3_path = os.path.join(os.getcwd(), img3path)
-    image3 = customtkinter.CTkImage(light_image=Image.open(image3_path), size=(150,230))
+    image3 = customtkinter.CTkImage(light_image=Image.open(image3_path), size=(desired_width, desired_height))
     image3_label = customtkinter.CTkLabel(root, image=image3, text='')
     image3_label.place(relx=0.5, rely=0.5, anchor='c')
 
     image4_path = os.path.join(os.getcwd(), img4path)
-    image4 = customtkinter.CTkImage(light_image=Image.open(image4_path), size=(150,230))
+    image4 = customtkinter.CTkImage(light_image=Image.open(image4_path), size=(desired_width, desired_height))
     image4_label = customtkinter.CTkLabel(root, image=image4, text='')
     image4_label.place(relx=0.7, rely=0.5, anchor='c')
 
     image5_path = os.path.join(os.getcwd(), img5path)
-    image5 = customtkinter.CTkImage(light_image=Image.open(image5_path), size=(150,230))
+    image5 = customtkinter.CTkImage(light_image=Image.open(image5_path), size=(desired_width, desired_height))
     image5_label = customtkinter.CTkLabel(root, image=image5, text='')
     image5_label.place(relx=0.9, rely=0.5, anchor='c')
     
@@ -77,7 +82,11 @@ def display_recommendations(img1path, img2path, img3path, img4path, img5path):
 
 root = customtkinter.CTk()
 root.title("Text Input Questions")
-root.geometry("1920x1080")
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+
+# Set the size and optionally position (e.g., "+0+0" positions the window at the top-left of the screen)
+root.geometry(f"{screen_width}x{screen_height}+0+0")
 
 # Bind the Enter key to the submit_answer function
 root.bind('<Return>', lambda event=None: submit_answer())
